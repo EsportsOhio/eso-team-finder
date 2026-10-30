@@ -1,0 +1,5 @@
+{
+  "directoryEndpoint": "https://register.esportsohio.org/api/public/team-directory",
+  "geocodeEndpoint": "https://register.esportsohio.org/api/public/team-directory/geocode",
+  "refreshMinutes": 10
+}

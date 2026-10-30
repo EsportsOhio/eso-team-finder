@@ -1,0 +1,130 @@
+:root {
+  color-scheme: light;
+  --navy: #000080;
+  --navy-deep: #00004c;
+  --slate: #83838d;
+  --ink: #18223c;
+  --muted: #526078;
+  --bg: #f7f8fb;
+  --border: #dce2ec;
+  --white: #ffffff;
+  --small-radius: 7px;
+  --round: 10px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:var(--ink);line-height:1.45}
+button,select,input{font:inherit}
+button{cursor:pointer}
+a{color:var(--navy)}
+:focus-visible{outline:3px solid #4c69f4;outline-offset:3px}
+[hidden]{display:none!important}
+.wrap{max-width:1450px;margin-inline:auto;padding-inline:clamp(18px,3vw,44px)}
+.skip{position:absolute;left:-9999px;top:10px;z-index:200;background:white;padding:12px;color:var(--navy)}
+.skip:focus{left:10px}
+.masthead{background:linear-gradient(105deg,var(--navy-deep),var(--navy));color:white;box-shadow:0 3px 10px #12164f14}
+.brand-row{min-height:81px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-logo{width:58px;height:58px;object-fit:contain;background:white;border-radius:5px;border:2px solid #fff;padding:2px}
+.brand-name{display:flex;flex-direction:column;line-height:1.15;gap:4px}
+.brand-name strong{font-size:22px;letter-spacing:.035em;line-height:1}
+.brand-name span{color:#e5e8f2;font-size:13px;letter-spacing:.03em}
+.top-note{font-size:13px;color:#e5e8f2}
+.content{padding-top:27px;padding-bottom:50px}
+.introduction h1{font-size:clamp(28px,3.6vw,46px);line-height:1.07;margin:0 0 7px;letter-spacing:-.045em;font-weight:820;color:#06145c}
+.introduction p{font-size:17px;color:var(--muted);margin:0 0 19px}
+.filters{display:flex;flex-direction:column;gap:14px;margin-bottom:17px}
+.search-row{display:grid;grid-template-columns:minmax(210px,2fr) minmax(150px,.8fr) minmax(145px,.68fr);gap:16px;align-items:end}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field>span:first-child, .programs legend{font-size:13px;line-height:1.1;color:#1a2340;font-weight:700}
+.field input,.field select,.sort-label select{height:46px;width:100%;background:white;border:1px solid #c9d2e1;border-radius:var(--small-radius);padding:0 14px;color:#14213b;min-width:0}
+.field input:focus,.field select:focus,.sort-label select:focus{border-color:var(--navy)}
+.input-wrap{position:relative;display:block}
+.input-wrap .input-icon{position:absolute;left:15px;top:8px;color:#63708b;font-size:25px;line-height:1;pointer-events:none}
+.input-wrap input{padding-left:43px}
+.primary-button{border:0;border-radius:7px;background:var(--navy);color:white;height:46px;font-size:15px;font-weight:700;display:flex;justify-content:center;align-items:center;gap:9px;box-shadow:0 2px 7px #00005025}
+.primary-button:hover{background:#111ba7}
+.primary-button span{font-size:22px;font-weight:400;line-height:0}
+.primary-button:disabled,.quiet-button:disabled{opacity:.55;cursor:wait}
+.filter-row{display:grid;grid-template-columns:minmax(290px,1.2fr) minmax(210px,1fr) minmax(195px,.75fr);gap:16px;align-items:end}
+.programs{border:0;margin:0;padding:0;min-width:0}
+.programs legend{margin-bottom:10px}
+.programs .check{display:inline-flex;align-items:center;gap:9px;margin-right:24px;font-size:14px;white-space:nowrap;color:#26314b;cursor:pointer}
+.programs input{width:18px;height:18px;accent-color:var(--navy);margin:0}
+.season-cell{height:46px;display:flex;align-items:center}
+.season-label{display:flex;width:100%;height:43px;justify-content:center;align-items:center;border-radius:6px;background:#ecedfa;color:var(--navy);font-size:13px;font-weight:800;border:1px solid #c5caec}
+.notice{padding:12px 16px;border:1px solid #b2bce8;border-radius:7px;margin:7px 0 16px;background:#f0f2fd;color:#17246c;font-size:14px}
+.notice.error{border-color:#d4d9e1;color:#374158;background:#f3f5f8}
+.map-section{height:355px;border-radius:8px;border:1px solid #d2dbe5;position:relative;overflow:hidden;background:#e8eef3;margin-bottom:22px}
+#map{height:100%;width:100%;z-index:1}
+.map-fallback{position:absolute;inset:0;z-index:2;background:linear-gradient(125deg,#ecf1f5,#dfe9f1);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#20304c;text-align:center;padding:20px}
+.map-fallback strong{font-size:19px}
+.map-fallback span{color:#5a6a80;font-size:14px}
+.map-legend,.map-caption{position:absolute;z-index:3;background:#ffffffeb;box-shadow:0 1px 5px #16204619;border-radius:5px;font-size:11px;padding:6px 10px;bottom:11px;color:#394962}
+.map-legend{left:12px;display:flex;align-items:center;gap:7px}
+.map-caption{right:11px}
+.pin-dot{height:9px;width:9px;background:var(--navy);border-radius:50%}
+.results-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.result-label{display:flex;align-items:baseline;gap:12px;min-width:0;flex-wrap:wrap}
+.result-label h2{font-size:clamp(21px,2vw,27px);letter-spacing:-.04em;color:#06145c;line-height:1.1;margin:0;font-weight:800}
+.result-label p{margin:0;font-size:14px;color:#41506e}
+.results-actions{display:flex;align-items:center;gap:14px}
+.quiet-button{border:1px solid #cad2e2;border-radius:6px;color:var(--navy);padding:8px 11px;background:white;font-weight:700;font-size:13px;white-space:nowrap}
+.quiet-button:hover{background:#f0f3fb}
+.sort-label{display:flex;align-items:center;gap:10px;font-size:13px;white-space:nowrap}
+.sort-label select{height:38px;padding-inline:10px;min-width:175px;font-size:13px}
+.table-shell{overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:white}
+table{border-collapse:collapse;width:100%;font-size:14px}
+thead{background:#f0f2f6}
+th{text-align:left;font-size:12px;color:#273653;white-space:nowrap;padding:10px 13px;font-weight:750}
+th.distance-heading{text-align:right}
+td{border-top:1px solid #e5e9f0;padding:11px 13px;vertical-align:middle}
+tr:hover td{background:#f8f9fd}
+.school-name{font-weight:750;color:var(--navy);line-height:1.2}
+.school-name button{appearance:none;background:none;border:0;color:var(--navy);font-weight:750;font-size:14px;padding:0;text-align:left;cursor:pointer}
+.school-name button:hover{text-decoration:underline}
+.program-tag{display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:5px;background:var(--navy);color:white;font-size:11px;white-space:nowrap;line-height:1.2;font-weight:750}
+.program-tag.ms{background:#737b8b}
+.team-count{font-weight:650;white-space:nowrap}
+.game-icons{display:flex;align-items:center;gap:5px;flex-wrap:nowrap;max-width:100%;min-width:0;overflow:hidden}
+.game-icon{font-size:10px;white-space:nowrap;font-weight:800;border-radius:4px;min-width:32px;max-width:50px;height:25px;display:inline-flex;align-items:center;justify-content:center;background:#eceef4;color:#1a2c55;border:1px solid #e0e5ec;overflow:hidden;padding:0 4px;flex-shrink:0}
+.game-icon img{width:23px;height:23px;object-fit:contain}
+.game-overflow{font-size:11px;color:#43506b;white-space:nowrap;font-weight:800}
+.distance{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:#3e4d68}
+.empty-row{padding:40px;text-align:center;color:#59657e}
+.results-foot{margin:10px 0 0;font-size:12px;color:#69758a}
+.site-footer{border-top:1px solid #e6e9f0;background:#fbfcfe;color:#65718a;font-size:12px}
+.site-footer .wrap{display:flex;gap:10px;justify-content:space-between;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+/* Leaflet markers intentionally accept a future school logo without geometry or API changes. */
+.eso-pin{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;border:3px solid white;box-shadow:0 2px 8px #14205077;display:flex;align-items:center;justify-content:center;font:800 12px/1 ui-sans-serif,system-ui}
+.eso-pin.ms{background:#697386}
+.eso-pin img{width:100%;height:100%;object-fit:contain;background:white;border-radius:50%}
+.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:var(--navy);color:white;font:800 13px/1 ui-sans-serif,system-ui;display:flex;align-items:center;justify-content:center}
+.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{background:#0000803b}
+.leaflet-popup-content-wrapper{border-radius:7px}
+.popup-school{color:var(--navy);font-weight:800;margin:0 0 2px;font-size:14px}
+.popup-info{font-size:12px;color:#526078;margin:0}
+.popup-button{border:0;background:transparent;color:var(--navy);padding:4px 0 0;font-weight:700;cursor:pointer;text-decoration:underline;font-size:12px}
+@media (max-width:930px){.result-label{display:block}.result-label p{margin-top:5px}.game-icons{max-width:235px}.programs .check{margin-right:15px}.filter-row{grid-template-columns:1.1fr 1fr .7fr}}
+@media (max-width:730px){
+ .brand-row{min-height:72px}.brand-logo{height:50px;width:50px}.brand-name strong{font-size:19px}.top-note{display:none}
+ .content{padding-top:22px}.introduction p{font-size:15px;margin-bottom:19px}
+ .search-row{grid-template-columns:minmax(0,1fr) 135px;gap:11px}.address-field{grid-column:1 / -1}.primary-button{grid-column:1 / -1}
+ .filter-row{grid-template-columns:1fr 1fr;gap:12px}.programs{grid-column:1 / -1}.season-cell{grid-column:2}.game-field{grid-column:1}
+ .map-section{height:290px;margin-top:5px}.map-legend{display:none}.map-caption{left:10px;right:auto;bottom:10px}
+ .results-head{align-items:flex-start;flex-direction:column}.results-actions{width:100%;justify-content:space-between}
+ .sort-label select{min-width:145px}
+ table,tbody,tr,td{display:block;width:100%}thead{display:none}.table-shell{border:0;background:transparent}
+ tbody{display:flex;flex-direction:column;gap:10px}
+ tr{display:grid;grid-template-columns:1fr auto;align-items:center;gap:5px 12px;background:white;border:1px solid var(--border);border-radius:8px;padding:13px 14px}
+ td{border:0;padding:0;width:auto}td[data-label]::before{display:none}
+ td.school-name{grid-column:1 / -1;font-size:15px;margin-bottom:3px}
+ td:nth-child(2){grid-column:1;color:#576680;font-size:12px}
+ td:nth-child(3){grid-column:2;grid-row:2}
+ td:nth-child(4){grid-column:1;grid-row:3;font-size:13px}
+ td:nth-child(5){grid-column:1 / -1;grid-row:4;margin-top:3px}
+ td.distance{grid-column:2;grid-row:3;text-align:right;font-size:12px}
+ td.empty-row{grid-column:1 / -1;text-align:center;padding:23px}
+ .game-icons{max-width:100%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

@@ -1,0 +1,11 @@
+# Build and local runtime output
+dist/
+node_modules/
+*.log
+*.pid
+.DS_Store
+.env
+.env.*
+!.env.example
+# Ignore local handoff and sensitive project internals if copied into the checkout
+docs/CODEX-HANDOFF.md

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000080" />
+    <meta name="description" content="Find Esports Ohio high school and middle school teams near you. Search by location, program and game." />
+    <title>Team Finder | Esports Ohio</title>
+    <link rel="icon" type="image/png" href="assets/eso-logo.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" defer></script>
+    <script type="module" src="assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to Team Finder</a>
+    <header class="masthead">
+      <div class="wrap brand-row">
+        <div class="brand" aria-label="Esports Ohio Team Finder">
+          <img class="brand-logo" src="assets/eso-logo.png" alt="Esports Ohio" width="58" height="58" />
+          <div class="brand-name"><strong>ESPORTS OHIO</strong><span>Team Finder</span></div>
+        </div>
+        <span class="top-note">Find nearby participating schools</span>
+      </div>
+    </header>
+    <main class="wrap content" id="main">
+      <section class="introduction" aria-labelledby="heading">
+        <h1 id="heading">Find teams near you</h1>
+        <p>Explore confirmed Esports Ohio schools by distance, program, and game.</p>
+      </section>
+      <form class="filters" id="filters" autocomplete="off">
+        <div class="search-row">
+          <label class="field address-field" for="address">
+            <span>School address or ZIP code</span>
+            <span class="input-wrap"><span aria-hidden="true" class="input-icon">⌕</span><input id="address" name="address" type="search" placeholder="Enter an Ohio address or ZIP code" maxlength="180" inputmode="search" /></span>
+          </label>
+          <label class="field radius-field" for="radius">
+            <span>Within</span>
+            <select id="radius" name="radius">
+              <option value="all">Statewide</option>
+              <option value="10">10 miles</option>
+              <option value="25" selected>25 miles</option>
+              <option value="50">50 miles</option>
+              <option value="75">75 miles</option>
+              <option value="100">100 miles</option>
+            </select>
+          </label>
+          <button id="search" class="primary-button" type="submit"><span aria-hidden="true">⌕</span> Search</button>
+        </div>
+        <div class="filter-row">
+          <fieldset class="programs">
+            <legend>Program</legend>
+            <label class="check"><input id="high-school" type="checkbox" checked /><span>High school</span></label>
+            <label class="check"><input id="middle-school" type="checkbox" checked /><span>Middle school</span></label>
+          </fieldset>
+          <label class="field game-field" for="game"><span>Game</span><select id="game"><option value="all">All games</option></select></label>
+          <div class="season-cell" aria-label="Season view"><span class="season-label" id="season-label">Current season</span></div>
+        </div>
+      </form>
+      <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+      <section class="map-section" aria-label="School map">
+        <div id="map" aria-label="Map of confirmed Esports Ohio schools" role="region"></div>
+        <div class="map-fallback" id="map-fallback" hidden>
+          <strong>Map tiles unavailable</strong>
+          <span>The participating-school list is still available below.</span>
+        </div>
+        <div class="map-legend"><span class="pin-dot"></span> Confirmed participating school</div>
+        <div class="map-caption">School locations are approximate. Distances are straight-line miles.</div>
+      </section>
+      <section class="results" aria-labelledby="results-title">
+        <div class="results-head">
+          <div class="result-label">
+            <h2 id="results-title">Participating schools</h2>
+            <p id="results-count">Loading verified school data…</p>
+          </div>
+          <div class="results-actions">
+            <button id="refresh" type="button" class="quiet-button" aria-label="Refresh participating schools">Refresh data</button>
+            <label class="sort-label" for="sort">Sort by <select id="sort"><option value="nearest">Distance (nearest)</option><option value="school">School name</option><option value="teamCount">Confirmed teams</option></select></label>
+          </div>
+        </div>
+        <div class="table-shell">
+          <table aria-describedby="results-count">
+            <thead><tr><th scope="col">School name</th><th scope="col">City</th><th scope="col">Program</th><th scope="col">Confirmed teams</th><th scope="col">Games</th><th scope="col" class="distance-heading">Distance</th></tr></thead>
+            <tbody id="schools"><tr><td colspan="6" class="empty-row">Loading current participating schools…</td></tr></tbody>
+          </table>
+        </div>
+        <p class="results-foot" id="results-foot"></p>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="wrap"><span>Esports Ohio · Current confirmed team participation</span><span id="freshness">Loading source information…</span></div></footer>
+  </body>
+</html>

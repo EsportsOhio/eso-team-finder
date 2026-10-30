@@ -105,3 +105,15 @@ test("game abbreviations remain compact and accessible labels exist", () => {
   assert.equal(GAME_INFO.ssbu.name, "Super Smash Bros. Ultimate");
   assert.equal(GAME_INFO.marvelRivals.short, "MR");
 });
+
+test("all approved radii preserve game/level filters and exclude unknown locations", () => {
+  const { schools } = normalizeDirectory(clone());
+  const origin = { latitude: 41.012, longitude: -81.600 };
+  const unknown = { ...schools[0], latitude: undefined, longitude: undefined };
+  for (const radius of [10, 25, 50, 75, 100]) {
+    const result = selectSchools([unknown, ...schools.slice(1)], { origin, radius, game: "rl", levels: ["high_school"] });
+    assert.ok(result.schools.every((s) => s.distance <= radius && s.level === "high_school" && s.games.some((g) => g.code === "rl")));
+    assert.ok(result.schools.every((s) => s.schoolProgramId !== unknown.schoolProgramId));
+  }
+  assert.throws(() => validateLocationResponse({ latitude: 41, longitude: -82, displayName: "Ohio", matchType: "guess" }), /match type/);
+});

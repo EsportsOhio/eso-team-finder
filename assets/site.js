@@ -41,7 +41,7 @@ async function fetchJSON(url, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 20000);
   try {
-    const res = await fetch(url, { signal: controller.signal, cache: "no-store", ...options });
+    const res = await fetch(url, { signal: controller.signal, cache: "no-store", credentials: "omit", ...options });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
   } finally { clearTimeout(timeout); }
@@ -229,6 +229,7 @@ async function loadDirectory(manual = false) {
   try {
     const url = localPreview ? "fixtures/demo-directory.json" : configuration.directoryEndpoint;
     const data = normalizeDirectory(await fetchJSON(url));
+    if (data.academicYear !== "2026-2027" || data.competitionPeriod !== "sponsored-fall") throw new Error("Unexpected directory season");
     directory = addVerifiedLocations(data, locations);
     const [startYear, endYear] = directory.academicYear.split("-");
     byId("season-label").textContent = `Current ${startYear.slice(-2)}–${endYear.slice(-2)}`;
@@ -242,7 +243,9 @@ async function loadDirectory(manual = false) {
     else setNotice("");
   } catch (error) {
     console.error("Team Finder directory unavailable", error);
-    setNotice("The current team directory cannot be loaded right now. Try refreshing the page. No team statuses have been inferred.", true);
+    setNotice(directory
+      ? "Refresh failed. Showing the last loaded directory; its observation time is shown below. Try Refresh data again."
+      : "The current team directory cannot be loaded right now. Try refreshing the page. No team statuses have been inferred.", true);
     if (!directory) {
       elements.count.textContent = "Current school data unavailable";
       const tr = document.createElement("tr"); const td = cell("Unable to display verified schools until the data feed is available.", "empty-row"); td.colSpan = 6;
@@ -287,7 +290,10 @@ async function boot() {
     locations = await fetchJSON("assets/locations.json");
     if (!configuration || !/^https:\/\//.test(configuration.directoryEndpoint) || !/^https:\/\//.test(configuration.geocodeEndpoint)) throw new Error("Invalid public endpoint configuration");
     await loadDirectory();
-    byId("filters").addEventListener("submit", searchAddress);
+    elements.search.addEventListener("click", searchAddress);
+    elements.address.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.isComposing && !elements.search.disabled) return searchAddress(event);
+    });
     elements.refresh.addEventListener("click", () => loadDirectory(true));
     for (const control of [elements.highSchool, elements.middleSchool, elements.game, elements.radius, elements.sort]) {
       control.addEventListener("change", () => renderSchools());

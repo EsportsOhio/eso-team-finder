@@ -164,5 +164,6 @@ export function selectSchools(schools, { levels = ["high_school", "middle_school
 export function validateLocationResponse(raw) {
   if (!plain(raw) || Object.keys(raw).some((k) => !["latitude", "longitude", "displayName", "matchType"].includes(k))) throw new Error("Invalid location response");
   if (!inOhio(raw.latitude, raw.longitude)) throw new Error("Location is outside Ohio");
-  return { latitude: raw.latitude, longitude: raw.longitude, displayName: requiredString(raw.displayName, "matched location", 180), matchType: raw.matchType === "postal_code" ? "postal_code" : "street_address" };
+  if (!["postal_code", "street_address"].includes(raw.matchType)) throw new Error("Invalid location match type");
+  return { latitude: raw.latitude, longitude: raw.longitude, displayName: requiredString(raw.displayName, "matched location", 180), matchType: raw.matchType };
 }

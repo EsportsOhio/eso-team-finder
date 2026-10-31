@@ -31,11 +31,11 @@
         <h1 id="heading">Find teams near you</h1>
         <p>Explore confirmed Esports Ohio schools by distance, program, and game.</p>
       </section>
-      <form class="filters" id="filters" autocomplete="off">
+      <div class="filters" id="filters" role="search" aria-label="Find nearby schools">
         <div class="search-row">
           <label class="field address-field" for="address">
             <span>School address or ZIP code</span>
-            <span class="input-wrap"><span aria-hidden="true" class="input-icon">⌕</span><input id="address" name="address" type="search" placeholder="Enter an Ohio address or ZIP code" maxlength="180" inputmode="search" /></span>
+            <span class="input-wrap"><span aria-hidden="true" class="input-icon">⌕</span><input id="address" name="address" type="search" autocomplete="off" placeholder="Enter an Ohio address or ZIP code" maxlength="180" inputmode="search" /></span>
           </label>
           <label class="field radius-field" for="radius">
             <span>Within</span>
@@ -48,7 +48,7 @@
               <option value="100">100 miles</option>
             </select>
           </label>
-          <button id="search" class="primary-button" type="submit"><span aria-hidden="true">⌕</span> Search</button>
+          <button id="search" class="primary-button" type="button"><span aria-hidden="true">⌕</span> Search</button>
         </div>
         <div class="filter-row">
           <fieldset class="programs">
@@ -59,7 +59,7 @@
           <label class="field game-field" for="game"><span>Game</span><select id="game"><option value="all">All games</option></select></label>
           <div class="season-cell" aria-label="Season view"><span class="season-label" id="season-label">Current season</span></div>
         </div>
-      </form>
+      </div>
       <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
       <section class="map-section" aria-label="School map">
         <div id="map" aria-label="Map of confirmed Esports Ohio schools" role="region"></div>

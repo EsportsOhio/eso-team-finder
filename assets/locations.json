@@ -18056,5 +18056,86 @@
       "source": "NCES EDGE public school point 2024-25"
     }
   },
-  "bySchoolId": {}
+  "bySchoolId": {
+    "a4461365-c47e-4ea2-97f4-57118ceb2698": {
+      "latitude": 39.944962,
+      "longitude": -82.910727,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 052696"
+    },
+    "08d465d4-d537-4f31-834e-c1809292d7d0": {
+      "latitude": 40.794153,
+      "longitude": -81.438451,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 052845"
+    },
+    "84f91951-78c6-4baa-82e9-a9b21934b591": {
+      "latitude": 39.276306,
+      "longitude": -84.335774,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 122697"
+    },
+    "60928d90-39c2-43c5-b50a-12da13d725a3": {
+      "latitude": 39.27076,
+      "longitude": -84.33618,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 111898"
+    },
+    "e05bf0f7-0b9d-498b-9f44-3ab801560a56": {
+      "latitude": 41.50518,
+      "longitude": -81.438393,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 052993"
+    },
+    "1aeac822-028a-4027-8393-16149cc6827f": {
+      "latitude": 41.403674,
+      "longitude": -81.761704,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 053348"
+    },
+    "bb4a81c0-bc99-43db-bfdd-85e50e85d134": {
+      "latitude": 39.189646,
+      "longitude": -84.585887,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 053140"
+    },
+    "ca7e5a0a-504b-4f5d-8a6d-5e591f3b5f2e": {
+      "latitude": 41.331577,
+      "longitude": -81.533519,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 009270"
+    },
+    "49e5942d-39da-4d93-847e-7c58a6c7e4a8": {
+      "latitude": 39.669872,
+      "longitude": -83.923028,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 067546"
+    },
+    "2aa7b899-27af-44f1-ac7e-e6e2173818e5": {
+      "latitude": 41.076131,
+      "longitude": -80.656986,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 132878"
+    },
+    "2b50d361-b100-4cd4-b8e0-e91208d9e722": {
+      "latitude": 41.485057,
+      "longitude": -81.783809,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 053546"
+    },
+    "8c1e8ecc-8770-4f7d-9f06-9db23a40aefa": {
+      "latitude": 41.325769,
+      "longitude": -81.73395,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 056713"
+    },
+    "304416cb-8da0-463e-b551-87f471621131": {
+      "latitude": 41.614158,
+      "longitude": -83.681639,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 054015"
+    },
+    "4afae5a9-be62-4fb5-b448-1f04367eaa7b": {
+      "latitude": 39.207425,
+      "longitude": -84.50289,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 053876"
+    },
+    "bfe570a5-93ea-42b0-a3db-4fda9acfd489": {
+      "latitude": 41.109605,
+      "longitude": -80.642074,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 053934"
+    },
+    "ab0b9b51-acc9-4d0d-9ed8-2a3bcf405bcc": {
+      "latitude": 40.135001,
+      "longitude": -82.974567,
+      "source": "Census geocoder 2026-10-31; official school campus; OEDS IRN 071001"
+    }
+  }
 }

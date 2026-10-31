@@ -117,3 +117,28 @@ test("all approved radii preserve game/level filters and exclude unknown locatio
   }
   assert.throws(() => validateLocationResponse({ latitude: 41, longitude: -82, displayName: "Ohio", matchType: "guess" }), /match type/);
 });
+
+test("reviewed private-school campus coordinate overrides", () => {
+  const locations = JSON.parse(fs.readFileSync(new URL("../assets/locations.json", import.meta.url), "utf8"));
+  assert.equal(Object.keys(locations.byNces).length, 3611);
+  assert.equal(Object.keys(locations.bySchoolId).length, 16);
+  for (const [id, point] of Object.entries(locations.bySchoolId)) {
+    assert.match(id, /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i);
+    assert.equal(inOhio(point.latitude, point.longitude), true);
+    assert.match(point.source, /Census geocoder 2026-10-31; official school campus; OEDS IRN [0-9]{6}$/);
+  }
+  const hsId = "84f91951-78c6-4baa-82e9-a9b21934b591";
+  const msId = "60928d90-39c2-43c5-b50a-12da13d725a3";
+  assert.notEqual(locations.bySchoolId[hsId].latitude, locations.bySchoolId[msId].latitude);
+  const raw = clone();
+  raw.schools[0].schoolId = hsId;
+  delete raw.schools[0].latitude;
+  delete raw.schools[0].longitude;
+  delete raw.schools[0].locationSource;
+  const normalized = normalizeDirectory(raw);
+  const mapped = addVerifiedLocations(normalized, locations);
+  assert.equal(mapped.schools[0].latitude, locations.bySchoolId[hsId].latitude);
+  assert.equal(mapped.schools[0].longitude, locations.bySchoolId[hsId].longitude);
+  const result = selectSchools(mapped.schools, { origin: {latitude: 39.28, longitude: -84.34}, radius: 10 });
+  assert.equal(result.schools.some(s => s.schoolId === hsId), true);
+});

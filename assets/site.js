@@ -268,7 +268,8 @@ async function searchAddress(event) {
   elements.search.textContent = "Searching…";
   try {
     if (query.length > 180) throw new Error("Address too long");
-    const url = new URL(configuration.geocodeEndpoint);
+    const endpoint = localPreview ? "/api/preview/geocode" : configuration.geocodeEndpoint;
+    const url = new URL(endpoint, location.origin);
     url.searchParams.set("query", query);
     const resolved = validateLocationResponse(await fetchJSON(url.toString()));
     origin = resolved;
